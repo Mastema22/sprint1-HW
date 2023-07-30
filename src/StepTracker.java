@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class StepTracker {
     Scanner scanner;
     MonthData[] monthToData = new MonthData[12];
-    MonthData monthData = new MonthData();
     Converter converter = new Converter();
 
     void wrongEnter() {
@@ -27,13 +26,13 @@ public class StepTracker {
         System.out.println("Введите номер месяца от 1 до 12:");
         int month = scanner.nextInt();
         if(month >= 1 && month <= 12) {
-            System.out.println("Введите номер дня от 1 до 30:");
+            System.out.println("Введите номер дня от 1 до 30 (включительно) :");
             int day = scanner.nextInt();
             if(day >= 1 && day <=30) {
                 System.out.println("Введите количество шагов (положительное значение):");
                 int steps = scanner.nextInt();
                     if (steps > 0) {
-                        monthData = monthToData[month - 1];
+                        MonthData monthData = monthToData[month -1];
                         monthData.days[day - 1] = steps;
                     } else wrongEnter();
             } else wrongEnter();
@@ -63,7 +62,7 @@ public class StepTracker {
             System.out.println("Среднее пройденное к-во шагов за месяц: " + sumSteps/30);
             System.out.println("Пройденное за месяц дистанция: " + converter.convertToKm(sumSteps) + " км.");
             System.out.println("Количество сожженых килокалорий за месяц: " + converter.convertStepsToKilocalories(sumSteps));
-            System.out.println("Лучшая серия шагов за месяц: " + monthData.bestSeries(goalByStepsPerDay));
+            System.out.println("Лучшая серия шагов за месяц: " + monthToData[monthDataOfMonth-1].bestSeries(goalByStepsPerDay));
             System.out.println();
         } else wrongEnter();
 

@@ -8,8 +8,8 @@ public class Main {
 
         while (true) {
             printMenu();
-            int numberMenu = scanner.nextInt();
 
+            int numberMenu = scanner.nextInt();
             if (numberMenu == 1) {
                 stepTracker.addNewNumberStepsDay();
 
@@ -21,6 +21,7 @@ public class Main {
 
             } else if (numberMenu == 0) {
                 System.out.println("Выход! Всего доброго!");
+                scanner.close();
                 return;
             } else System.out.println("Такой команды нет, попробуйте снова!");
 
@@ -30,9 +31,9 @@ public class Main {
     }
 
     static void printMenu() {
-        System.out.println("1 - Вести количество шагов за определенный день;");
+        System.out.println("1 - Ввести количество шагов за определённый день;");
         System.out.println("2 - Изменить цель по количеству шагов в день;");
-        System.out.println("3 - Напечатать статистику за определённый месяц;");
+        System.out.println("3 - напечатать статистику за определённый месяц;");
         System.out.println("0 - Выйти из приложения.");
         System.out.println("-------------------------------------------------");
         System.out.println("Пожалуйста, выберите нужный пункт меню:");
